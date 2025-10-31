@@ -1,30 +1,10 @@
-# print statement
+print('Hello world!\nHello world!\nHello world!')
 
-print('Hello world!')
+print('Hello' + " " + "Angela")
 
+input('Enter Your name here:  ')
 
-# string manipulation
-print('Hello world! \nHello World')
+print('Hello' + input('What is your name?') + '!')
 
-# string concatenation
-
-print('Hello' + 'Angela')
-
-print('Hello' + " " + 'angela')
-
-# python input Function
-print('Hello ' + input('What is your name? ') + "!")
-
-#variables
-name = "giorgi"
-
-# len function
-
-print(len('Dzabil;a'))
-
-#
-
-print(len(input("User input")))
-username = input('Enter your name ')
-length = len(username)
-print(length)
+name = input('What is your name?')
+print(len(name))
