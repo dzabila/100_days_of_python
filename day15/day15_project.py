@@ -11,7 +11,7 @@ def check_sufficent(drink):
     
 def get_coins():
   print('Please insert coins.')
-  sum = 0
+  total = 0
   quarters = int(input('How many quarters? :  ')) * 0.25
   dimes = int(input('How many dimes? :   ')) * 0.1
   nickles = int(input('How many nickles?  :')) * 0.05
