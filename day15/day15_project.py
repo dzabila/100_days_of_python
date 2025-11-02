@@ -4,7 +4,7 @@ menu = data.MENU
 ask_customer = input("What would you like? (espresso/latte/cappuccino)  ")
 def check_sufficent(drink):
   for key,value in drink.items():
-    if value > data.resources[key]:
+    if value > resources[key]:
       print(f'Sorry there is not enough {key}')
       return False
   return True
@@ -24,39 +24,27 @@ def make_drink(drink):
     resources[key] -= value
   resources['money'] += menu[drink]['cost']
   print(f'Take your {drink}')
+
+def process_order(drink_name):
+  if check_sufficent(menu[drink_name]['ingredients']) == True:
+      coins = get_coins()
+      if coins < menu[drink_name]['cost']:
+        print(f'Sorry that is not enough money. Money refunded: {coins}')
+      elif coins == menu[drink_name]['cost']:
+        make_drink(drink_name)
+      elif coins > menu[drink_name]['cost']:
+        print(f"Take your change {round(coins - menu[drink_name]['cost'],2)}") 
+        make_drink(drink_name)
 while ask_customer != "off":
   if ask_customer == "report":
     for key,value in resources.items():
       print(f"{key} : {value}")
-    # ask_customer = input("What would you like? (espresso/latte/cappuccino)  ")
   elif ask_customer == 'espresso':
-    if check_sufficent(menu['espresso']['ingredients']) == True:
-      coins = get_coins()
-      if coins < menu['espresso']['cost']:
-        print(f'Sorry that is not enough money. Money refunded: {coins}')
-      elif coins == menu['espresso']['cost']:
-        make_drink('espresso')
-      elif coins > menu['espresso']['cost']:
-        print(f'Take your change {round(coins - menu['espresso']['cost'],2)}') 
-        make_drink('espresso')
+    process_order('espresso')
   elif ask_customer == 'latte':
-    if check_sufficent(menu['latte']['ingredients']) == True:
-      coins = get_coins()
-      if coins < menu['latte']['cost']:
-        print(f'Sorry that is not enough money, Money refunded: {coins}')
-      elif coins == menu['latte']['cost']:
-        make_drink('latte')
-      elif coins > menu['latte']['cost']:
-        print(f'Take your change {round(coins - menu['latte']['cost'],2)}')
-        make_drink('latte')
+    process_order('latte')
   elif ask_customer == 'cappuccino':
-    if check_sufficent(menu['cappuccino']['ingredients']) == True:
-      coins = get_coins()
-      if coins < menu['cappuccino']['cost']:
-        print(f'Sorry that is not enough money. Money refunded: {coins}')
-      elif coins == menu['cappuccino']['cost']:
-        make_drink('cappuccino')
-      elif coins > menu['cappuccino']['cost']:
-        print(f'Take your change {round(coins - menu['cappuccino']['cost'],2)}')
-        make_drink('cappuccino')
+    process_order('cappuccino')
+  else:
+    print('Invalid input')
   ask_customer = input("What would you like? (espresso/latte/cappuccino)  ")
