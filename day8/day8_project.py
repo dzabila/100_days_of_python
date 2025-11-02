@@ -42,3 +42,4 @@ while game_is_on:
     ask = input('Do you want to start again? : yes/no   ')
     if ask == 'no':
       game_is_on = False
+
