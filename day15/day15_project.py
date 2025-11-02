@@ -16,8 +16,8 @@ def get_coins():
   dimes = int(input('How many dimes? :   ')) * 0.1
   nickles = int(input('How many nickles?  :')) * 0.05
   pennies = int(input('How many pennies? :'))* 0.01
-  sum = sum + quarters + dimes + nickles + pennies
-  return sum
+  total = total + quarters + dimes + nickles + pennies
+  return total
 
 def make_drink(drink):
   for key,value in menu[drink]['ingredients'].items():
