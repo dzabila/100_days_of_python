@@ -34,3 +34,4 @@ for x in range(10):
 t.setposition(-150,-150)
 screen = t.Screen()
 screen.exitonclick()
+
